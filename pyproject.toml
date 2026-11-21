@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tern-convert"
+version = "0.1.0"
+description = "Convert GGUF and safetensors models into the .tern ternary format for the Tern inference engine"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+authors = [
+    {name = "brahmasankar2011", email = "brahmasankar@protonmail.com"}
+]
+keywords = ["ai", "llm", "quantization", "ternary", "gguf", "safetensors"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.20.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+gguf = [
+    "gguf>=0.5.0",  # For Q4_K+, TQ1_0, TQ2_0 support
+]
+
+[project.scripts]
+tern-convert = "tern_convert.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/brahmasankar2011/tern-convert"
+Repository = "https://github.com/brahmasankar2011/tern-convert"
+Issues = "https://github.com/brahmasankar2011/tern-convert/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["src/tern_convert"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+]
