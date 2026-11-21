@@ -72,7 +72,7 @@ Pass `--report report.json` to write per-tensor details: name, shape, group size
 > 🚧 Not on PyPI yet. Install from source.
 
 ```bash
-git clone https://github.com/<your-account>/tern-convert.git
+git clone https://github.com/brahmasankar2011/tern-convert.git
 cd tern-convert
 python -m venv .venv
 # Windows: .venv\Scripts\activate     Linux/macOS: source .venv/bin/activate
